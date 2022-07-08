@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"fmt"
+	"io/ioutil"
 	"os"
 	"strings"
 )
@@ -53,5 +54,23 @@ func main(){
 
 
 	fmt.Println(string(bs))
+
+	bs, err =ioutil.ReadFile("test.txt")
+
+	if err != nil{
+		fmt.Println(err)
+	}
+
+	println(string(bs))
+
+	file, err = os.Create("text.txt")
+
+	if err !=nil{
+		return
+	}
+
+	defer file.Close()
+
+	file.WriteString("hey hello")
 }
 
